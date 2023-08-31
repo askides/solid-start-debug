@@ -6,17 +6,18 @@ import { createServerData$ } from "solid-start/server";
 import { db } from "~/drizzle/client";
 import { users } from "~/drizzle/schema";
 import { useRouteData } from "@solidjs/router";
+import { auth } from "~/services/session.service";
 
 export function routeData() {
-  return createServerData$(() => db.select().from(users));
+  return createServerData$(async (_, { request }) => {
+    const user = await auth(request);
+    return user;
+  });
 }
 
 export default function Page() {
-  const students = useRouteData<typeof routeData>();
-
   return (
     <main class="max-w-lg">
-      <pre>{JSON.stringify(students(), null, 2)}</pre>
       <form method="post" action="/sites/update" class="space-y-5">
         <div>
           <h3 class="text-lg font-semibold text-zinc-800">Blog Settings</h3>

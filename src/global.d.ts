@@ -2,7 +2,6 @@
 
 interface ImportMetaEnv {
   readonly VITE_DATABASE_URL: string;
-  // more env variables...
 }
 
 interface ImportMeta {
