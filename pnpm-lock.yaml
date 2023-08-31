@@ -19,6 +19,9 @@ dependencies:
     version: 0.3.5(@solidjs/meta@0.28.6)(@solidjs/router@0.8.3)(solid-js@1.7.11)(solid-start-node@0.3.5)(vite@4.4.9)
 
 devDependencies:
+  '@tailwindcss/forms':
+    specifier: ^0.5.6
+    version: 0.5.6(tailwindcss@3.3.3)
   '@types/node':
     specifier: ^18.17.5
     version: 18.17.12
@@ -1664,6 +1667,15 @@ packages:
     dependencies:
       solid-js: 1.7.11
 
+  /@tailwindcss/forms@0.5.6(tailwindcss@3.3.3):
+    resolution: {integrity: sha512-Fw+2BJ0tmAwK/w01tEFL5TiaJBX1NLT1/YbWgvm7ws3Qcn11kiXxzNTEQDMs5V3mQemhB56l3u0i9dwdzSQldA==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
+    dependencies:
+      mini-svg-data-uri: 1.4.4
+      tailwindcss: 3.3.3
+    dev: true
+
   /@types/babel__core@7.20.1:
     resolution: {integrity: sha512-aACu/U/omhdk15O4Nfb+fHgH/z3QsfQzpnvRZhYhThms83ZnAOZz7zZAWO7mn2yyNQaA4xTO8GLK3uqFU4bYYw==}
     dependencies:
@@ -2776,6 +2788,11 @@ packages:
   /mimic-fn@4.0.0:
     resolution: {integrity: sha512-vqiC06CuhBTUdZH+RYl8sFrL096vA45Ok5ISO6sE/Mr1jRbGH4Csnhi8f3wKVl7x8mO4Au7Ir9D3Oyv1VYMFJw==}
     engines: {node: '>=12'}
+
+  /mini-svg-data-uri@1.4.4:
+    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
+    hasBin: true
+    dev: true
 
   /minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
