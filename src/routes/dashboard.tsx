@@ -2,10 +2,21 @@ import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
 import { Button } from "~/components/ui/button";
+import { createServerData$ } from "solid-start/server";
+import { db } from "~/drizzle/client";
+import { users } from "~/drizzle/schema";
+import { useRouteData } from "@solidjs/router";
+
+export function routeData() {
+  return createServerData$(() => db.select().from(users));
+}
 
 export default function Page() {
+  const students = useRouteData<typeof routeData>();
+
   return (
     <main class="max-w-lg">
+      <pre>{JSON.stringify(students(), null, 2)}</pre>
       <form method="post" action="/sites/update" class="space-y-5">
         <div>
           <h3 class="text-lg font-semibold text-zinc-800">Blog Settings</h3>
