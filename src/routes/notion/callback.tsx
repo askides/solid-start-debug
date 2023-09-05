@@ -4,9 +4,15 @@ import { auth } from "~/services/session.service";
 import { config } from "~/services/environment.service";
 import { Workspace } from "~/models/workspace.server";
 
-// FIXME: Add authentication check.
 export async function GET({ request }: APIEvent) {
   const user = await auth(request);
+
+  if (!user) {
+    return new Response(JSON.stringify({ message: "Unauthorized" }), {
+      status: 401,
+    });
+  }
+
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
 
