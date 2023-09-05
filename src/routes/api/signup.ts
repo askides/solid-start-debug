@@ -2,8 +2,8 @@ import { type APIEvent, json } from "solid-start/api";
 import { email, minLength, object, parse, string } from "valibot";
 import { User } from "~/models/user.server";
 import { createUserSession } from "~/services/session.service";
-import { Telegram } from "~/services/telegram.service";
-import { encryptEmail } from "~/utils/strings";
+// import { Telegram } from "~/services/telegram.service";
+// import { encryptEmail } from "~/utils/strings";
 
 export async function POST({ request }: APIEvent) {
   const formData = await request.formData();
@@ -32,9 +32,9 @@ export async function POST({ request }: APIEvent) {
 
   const user = await User.create(values.email, values.password);
 
-  await Telegram.notify(
-    `👋 A new user has registered: ${encryptEmail(user.email)}`,
-  );
+  // await Telegram.notify(
+  //   `👋 A new user has registered: ${encryptEmail(user.email)}`,
+  // );
 
   const session = await createUserSession(user.id, "/dashboard");
 
