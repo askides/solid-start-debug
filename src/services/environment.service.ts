@@ -1,5 +1,5 @@
 import type { Output } from "valibot";
-import { enumType, object, parse, string } from "valibot";
+import {enumType, object, parse, safeParse, string} from "valibot";
 
 const EnvSchema = object({
   NODE_ENV: enumType(["development", "production", "test"]),
@@ -16,6 +16,7 @@ const EnvSchema = object({
 export type Env = Output<typeof EnvSchema>;
 
 export function config(string: keyof Env) {
-  const values = parse(EnvSchema, process.env);
+  const values = safeParse(EnvSchema, process.env);
+  // @ts-ignore Just for the demo
   return values[string];
 }
