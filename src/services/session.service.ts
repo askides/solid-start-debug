@@ -21,18 +21,19 @@ export async function createUserSession(userId: string, redirectTo: string) {
   return storage.commitSession(session);
 }
 
+// TODO: Check behavior in createServerData
 export async function auth(request: Request) {
   const session = await storage.getSession(request.headers.get("Cookie"));
   const uid = session.get("userId");
 
   if (!uid) {
-    throw redirect("/signin");
+    return null;
   }
 
   const user = await User.find(uid);
 
   if (!user) {
-    throw await logout(request);
+    return null;
   }
 
   return user;
